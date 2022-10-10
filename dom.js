@@ -59,3 +59,7 @@ for(var i = 0; i < items.length; i++){
     items[i].style.fontWeight = "bold";
     items[i].style.color='#FF0000';
 }
+ items[4].style.color='green';
+ var tag = document.getElementsByTagName('li')
+ console.log(tag)
+ tag[4].style.backgroundColor='black';
