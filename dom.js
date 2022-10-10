@@ -38,3 +38,24 @@ console.log(Title[0]);
 Title[1].style.borderBottom = 'solid 3px #000';
 Title[0].style.color='#00FF00';
 Title[0].style.fontWeight='bold';
+
+// Task - 4 -> GetElementByClassName 
+// GETELEMENTSBYCLASSNAME 
+var items = document.getElementsByClassName('list-group-item') 
+console.log(items); 
+console.log(items[1]); 
+items[1].textContent = 'Hello 2'; 
+items[1].style.fontWeight = "bold"; 
+items[1].style.backgroundColor = 'yellow';
+
+// Gives error 
+//items.style.backgroundColor = '#f4f4f4';
+for(var i = 0; i < items.length; i++){
+    items[i].style.backgroundColor = '#f4f4f4';
+}
+
+items[2].style.backgroundColor = '#00FF00';
+for(var i = 0; i < items.length; i++){
+    items[i].style.fontWeight = "bold";
+    items[i].style.color='#FF0000';
+}
