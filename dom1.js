@@ -35,6 +35,18 @@ function addItem(e){
   // Append button to li
   li.appendChild(deleteBtn);
 
+  // Task - Create edit button element (Button only no Function for Task - 8)
+  var editBtn = document.createElement('edit');
+
+  // Add classes to edit button
+  editBtn.className = 'btn btn-warning btn-sm float-right edit';
+
+  // Append text node
+  editBtn.appendChild(document.createTextNode('Edit'));
+
+  // Append button to li
+  li.appendChild(editBtn);
+
   // Append li to list
   itemList.appendChild(li);
 }
@@ -47,21 +59,4 @@ function removeItem(e){
       itemList.removeChild(li);
     }
   }
-}
-
-// Filter Items
-function filterItems(e){
-  // convert text to lowercase
-  var text = e.target.value.toLowerCase();
-  // Get lis
-  var items = itemList.getElementsByTagName('li');
-  // Convert to an array
-  Array.from(items).forEach(function(item){
-    var itemName = item.firstChild.textContent;
-    if(itemName.toLowerCase().indexOf(text) != -1){
-      item.style.display = 'block';
-    } else {
-      item.style.display = 'none';
-    }
-  });
 }
