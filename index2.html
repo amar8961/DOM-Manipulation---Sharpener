@@ -11,7 +11,7 @@
         <h2 style="text-align:center; color: yellow; ">BOOK A CALL</h2>
         <h4 style="text-align:center;">Book a Call and our team will call you</h4>
         <hr width="100%" size="5px" style="background-color:black;">
-        <form style="text-align:center" action="#" id="my-form" onsubmit="register()">
+        <form style="text-align:center" action="#" id="my-form" onsubmit="register() , saveToLocalStorage(event)">
             <div class="msg" style="background-color: green; padding: 5px; margin: 5px;"></div>
             <label>Name</label>
             <input type="text" id="name" placeholder="name"><br><br>
@@ -122,6 +122,18 @@
             phoneInput.value = '';
           }
         }
+    </script>
+    <!-- Task - 10 - store the details entered by the user in the local storage when he clicks on submit. -->
+    <script>
+      function saveToLocalStorage(event){
+        event.preventDefault();
+        const name = event.target.name.value;
+        const email = event.target.email.value;
+        const phone = event.target.phone.value;
+        localStorage.setItem('name',name);
+        localStorage.setItem('email',email);
+        localStorage.setItem('phone',phone);
+      }
     </script>
 </body>
 </html>
