@@ -130,9 +130,9 @@
         const name = event.target.name.value;
         const email = event.target.email.value;
         const phone = event.target.phone.value;
-        localStorage.setItem('name',name);
-        localStorage.setItem('email',email);
-        localStorage.setItem('phone',phone); 
+        // localStorage.setItem('name',name);
+        // localStorage.setItem('email',email);
+        // localStorage.setItem('phone',phone); 
 
       // Task 11 -> Lets store the users in the right format ->
       const obj = {
@@ -140,8 +140,19 @@
           email:email,
           phone:phone
         }
-        localStorage.setItem('userDetails', JSON.stringify(obj));
+        localStorage.setItem("userDetails", JSON.stringify(obj));
+        // Task 12 -> Lets scale the app to more users
+        localStorage.setItem(obj.email, JSON.stringify(obj));
+        showNewUserOnScreen(obj);
       } 
+      function showNewUserOnScreen(user){
+        const parentNode = document.getElementById('listOfUsers');
+        const childHTML = `<li> ${user.name} - ${user.email} - ${user.phone}</li>`
+
+        parentNode.innerHTML = parentNode.innerHTML + childHTML;
+      }
     </script>
+    <!-- Task 12 -> Lets scale the app to more users  -->
+    <ul id='listOfUsers'></ul>
 </body>
 </html>
