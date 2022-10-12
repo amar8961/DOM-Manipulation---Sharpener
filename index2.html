@@ -132,8 +132,16 @@
         const phone = event.target.phone.value;
         localStorage.setItem('name',name);
         localStorage.setItem('email',email);
-        localStorage.setItem('phone',phone);
-      }
+        localStorage.setItem('phone',phone); 
+
+      // Task 11 -> Lets store the users in the right format ->
+      const obj = {
+          name:name,
+          email:email,
+          phone:phone
+        }
+        localStorage.setItem('userDetails', JSON.stringify(obj));
+      } 
     </script>
 </body>
 </html>
