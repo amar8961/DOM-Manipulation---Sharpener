@@ -146,11 +146,46 @@
         showNewUserOnScreen(obj);
       } 
       function showNewUserOnScreen(user){
+        if(localStorage.getItem(user.email) !== null){
+            removeUserFromScreen(user.email)
+        }
+
         const parentNode = document.getElementById('listOfUsers');
-        const childHTML = `<li> ${user.name} - ${user.email} - ${user.phone}</li>`
+        const childHTML = `<li id=${user.email}> ${user.name} - ${user.email} - ${user.phone}
+                                 <button onclick=deleteUser('${user.email}')> Delete User </button>
+                                 <button onclick=editUserDetails('${user.name}','${user.email}','${user.phone}')> Edit </button>
+                            </li>`
 
         parentNode.innerHTML = parentNode.innerHTML + childHTML;
       }
+
+      // Task 13 -> Delete/Edit data from Local Storage
+      // deleteUse
+      function deleteUser(emailId){
+          console.log(emailId)
+          localStorage.removeItem(emailId);
+          removeUserFromScreen(emailId);
+
+      }
+
+      function removeUserFromScreen(emailId){
+          const parentNode = document.getElementById('listOfUsers');
+          const childNodeToBeDeleted = document.getElementById(emailId);
+
+          if(childNodeToBeDeleted) {
+              parentNode.removeChild(childNodeToBeDeleted)
+          }
+      }
+
+      // Edit User
+      function editUserDetails(name, emailId, phone){
+        //document.getElementById('emailId').value =emailId;
+        document.getElementById('name').value = name;
+        document.getElementById('email').value = emailId;
+        document.getElementById('phone').value = phone;
+        
+        deleteUser(emailId)
+    }
     </script>
     <!-- Task 12 -> Lets scale the app to more users  -->
     <ul id='listOfUsers'></ul>
